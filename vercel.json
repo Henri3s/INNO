@@ -1,0 +1,7 @@
+{
+  "name": "inno",
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null
+}
