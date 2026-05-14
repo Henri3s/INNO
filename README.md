@@ -2,7 +2,7 @@
 
 Single-file HTML pages as a communication medium — spatial, interactive, self-contained.
 
-Deployed via Vercel: https://inno-henri3s.vercel.app
+Deployed via Vercel: https://inno-eta.vercel.app
 
 ## Structure
 
