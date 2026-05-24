@@ -3,5 +3,10 @@
   "version": 2,
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    { "source": "/authoritative-tech-transfer-report.html", "destination": "/reports/tech-transfer.html", "permanent": true },
+    { "source": "/authoritative-report", "destination": "/reports/tech-transfer.html", "permanent": true },
+    { "source": "/authoritative-report/", "destination": "/reports/tech-transfer.html", "permanent": true }
+  ]
 }
