@@ -3,68 +3,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>三创赛评委高频30问 — 考核逻辑全解析</title>
+<title>三创赛评委高频30问 — 考核逻辑全解析 | INNO</title>
 <style>
-  :root { --bg: #fafafa; --card: #fff; --border: #e5e7eb; --text: #1f2937; --sub: #6b7280; --accent: #2563eb; --tag-bg: #eff6ff; --tag-text: #1d4ed8; --insight-bg: #fefce8; --insight-border: #facc15; --score-bg: #f0fdf4; --score-border: #22c55e; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #111827; --card: #1f2937; --border: #374151; --text: #f3f4f6; --sub: #9ca3af; --accent: #60a5fa; --tag-bg: #1e3a5f; --tag-text: #93c5fd; --insight-bg: #422006; --insight-border: #a16207; --score-bg: #052e16; --score-border: #16a34a; } }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 0 1rem; }
-  .wrap { max-width: 880px; margin: 0 auto; }
-  .hero { text-align: center; padding: 3rem 0 1.5rem; }
-  .hero h1 { font-size: 1.7rem; font-weight: 700; margin-bottom: .5rem; }
-  .hero p { color: var(--sub); font-size: .92rem; max-width: 560px; margin: 0 auto; }
-  .hero .badge { display: inline-block; background: var(--accent); color: #fff; font-size: .72rem; padding: 2px 10px; border-radius: 99px; margin-bottom: .65rem; }
-  /* Score bar */
-  .score-bar { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin: 1.2rem 0 .5rem; }
-  .score-item { display: flex; flex-direction: column; align-items: center; min-width: 70px; }
-  .score-num { font-size: 1.3rem; font-weight: 700; }
-  .score-label { font-size: .7rem; color: var(--sub); margin-top: 2px; }
-  .score-color-1 { color: #3b82f6; } .score-color-2 { color: #10b981; } .score-color-3 { color: #f59e0b; } .score-color-4 { color: #ec4899; } .score-color-5 { color: #8b5cf6; }
-  .score-total { border-top: 1px solid var(--border); text-align: center; padding-top: .5rem; margin-top: .25rem; font-size: .82rem; color: var(--sub); }
-  /* TOC */
-  .toc { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 1.5rem 0 2.5rem; }
-  .toc a { font-size: .8rem; padding: 4px 14px; border-radius: 99px; border: 1px solid var(--border); color: var(--sub); text-decoration: none; transition: .2s; }
-  .toc a:hover { border-color: var(--accent); color: var(--accent); }
-  /* Category */
-  .category { margin-bottom: 2.5rem; }
-  .cat-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .4rem; }
-  .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .cat-title { font-size: 1.05rem; font-weight: 700; }
-  .cat-count { font-size: .73rem; color: var(--sub); background: var(--tag-bg); padding: 2px 8px; border-radius: 99px; }
-  .cat-score { font-size: .72rem; color: var(--accent); }
-  /* Card */
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: .7rem; transition: .2s; }
-  .card:hover { box-shadow: 0 3px 10px rgba(0,0,0,.05); }
-  .q-head { display: flex; align-items: flex-start; gap: .6rem; }
-  .q-num { font-weight: 700; font-size: .78rem; color: var(--accent); background: var(--tag-bg); min-width: 27px; height: 27px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-  .q-text { font-weight: 600; font-size: .93rem; }
-  .q-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-  .q-tag { font-size: .65rem; padding: 1px 8px; border-radius: 99px; background: var(--tag-bg); color: var(--tag-text); }
-  .insight { margin-top: .55rem; margin-left: 2.3rem; padding: .55rem .8rem; background: var(--insight-bg); border-left: 3px solid var(--insight-border); border-radius: 0 6px 6px 0; font-size: .84rem; color: var(--sub); }
-  .insight strong { color: var(--text); }
-  /* Tips */
-  .tips { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.3rem; margin: 2rem 0 1rem; }
-  .tips h3 { font-size: 1rem; margin-bottom: .6rem; }
-  .tips ul { font-size: .86rem; color: var(--sub); line-height: 1.8; padding-left: 1rem; }
-  .foot { text-align: center; padding: 2rem 0 3rem; color: var(--sub); font-size: .78rem; }
-  .foot a { color: var(--accent); text-decoration: none; }
-  @media(max-width:600px){ .hero h1{font-size:1.3rem} .card{padding:.8rem .95rem} .insight{margin-left:0} .score-item{min-width:55px} .score-num{font-size:1.1rem} }
+/* ===== Reset & Variables ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --hue: 210;
+  --bg: #f8f9fa;
+  --surface: #fff;
+  --surface-hover: #f5f6f7;
+  --text: #171717;
+  --text-secondary: #525252;
+  --text-muted: #a3a3a3;
+  --border: #e5e5e5;
+  --border-light: #f0f0f0;
+  --accent: hsl(var(--hue),60%,48%);
+  --accent-soft: hsl(var(--hue),45%,96%);
+  --accent-mid: hsl(var(--hue),35%,40%);
+  --tag-bg: hsl(var(--hue),40%,94%);
+  --tag-text: hsl(var(--hue),60%,35%);
+  --insight-bg: #fefce8;
+  --insight-border: #d4a72c;
+  --score-bg: #f0fdf4;
+  --score-border: #22c55e;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.06);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --font: "Outfit","Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --transition: 200ms cubic-bezier(.4,0,.2,1);
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-hover: #1a1a1a;
+    --text: #f5f5f5;
+    --text-secondary: #a3a3a3;
+    --text-muted: #525252;
+    --border: #262626;
+    --border-light: #1e1e1e;
+    --accent: hsl(var(--hue),55%,55%);
+    --accent-soft: hsl(var(--hue),30%,10%);
+    --tag-bg: #1a2a3a;
+    --tag-text: hsl(var(--hue),50%,70%);
+    --insight-bg: #2a2008;
+    --insight-border: #8a6f1a;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.2);
+    --shadow-md: 0 4px 14px rgba(0,0,0,.25);
+  }
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  padding:0 1rem;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.wrap{max-width:880px;margin:0 auto}
+
+/* ===== Hero ===== */
+.hero{text-align:center;padding:3rem 0 1.5rem}
+.hero .badge{
+  display:inline-block;font-size:.72rem;font-weight:600;
+  color:var(--accent);background:var(--accent-soft);
+  padding:3px 12px;border-radius:99px;margin-bottom:.8rem;
+}
+.hero h1{
+  font-size:1.8rem;font-weight:700;letter-spacing:-.02em;
+  line-height:1.25;text-wrap:balance;margin-bottom:.5rem;
+}
+.hero h1 br{display:none}
+.hero p{
+  color:var(--text-secondary);font-size:.92rem;font-weight:450;
+  max-width:580px;margin:0 auto;text-wrap:pretty;
+}
+
+/* ===== Score Bar ===== */
+.score-bar{
+  display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;
+  margin:1.3rem 0 .3rem;
+}
+.score-item{display:flex;flex-direction:column;align-items:center;min-width:68px}
+.score-num{font-size:1.3rem;font-weight:700;line-height:1.1}
+.score-label{font-size:.7rem;color:var(--text-muted);margin-top:2px}
+.score-color-1{color:hsl(215,80%,55%)}
+.score-color-2{color:hsl(160,60%,45%)}
+.score-color-3{color:hsl(40,85%,50%)}
+.score-color-4{color:hsl(330,65%,55%)}
+.score-color-5{color:hsl(270,60%,55%)}
+.score-total{
+  text-align:center;padding-top:.5rem;margin-top:.25rem;
+  font-size:.8rem;color:var(--text-muted);
+  border-top:1px solid var(--border);
+}
+
+/* ===== TOC ===== */
+.toc{
+  display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;
+  margin:1.5rem 0 2.5rem;
+}
+.toc a{
+  font-size:.8rem;font-weight:500;
+  padding:4px 14px;border-radius:99px;
+  border:1.5px solid var(--border);
+  color:var(--text-secondary);
+  text-decoration:none;
+  transition:all var(--transition);
+}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+.toc a:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;
+}
+
+/* ===== Category ===== */
+.category{margin-bottom:2.6rem}
+.cat-header{
+  display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;
+}
+.cat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.cat-title{font-size:1.05rem;font-weight:650;letter-spacing:-.01em}
+.cat-count{
+  font-size:.73rem;color:var(--text-muted);
+  background:var(--accent-soft);padding:2px 8px;border-radius:99px;
+}
+.cat-score{font-size:.72rem;color:var(--accent);margin-left:auto}
+.cat-desc{
+  font-size:.8rem;color:var(--text-muted);
+  margin-bottom:1rem;text-wrap:pretty;
+}
+
+/* ===== Cards ===== */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:1rem 1.2rem;
+  margin-bottom:.7rem;
+  transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);
+}
+.card:hover{
+  transform:translateY(-1.5px);
+  box-shadow:var(--shadow-md);
+  border-color:var(--border);
+}
+.card:focus-within{
+  outline:2px solid var(--accent);outline-offset:2px;
+  border-radius:var(--radius-md);
+}
+
+.q-head{display:flex;align-items:flex-start;gap:.65rem}
+.q-num{
+  font-weight:700;font-size:.78rem;
+  color:var(--accent);background:var(--accent-soft);
+  min-width:27px;height:27px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;
+}
+.q-text{font-weight:550;font-size:.92rem;line-height:1.55}
+.q-text .alt-label{
+  font-size:.82rem;font-weight:450;
+  color:var(--text-muted);
+}
+
+.q-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.q-tag{
+  font-size:.65rem;padding:1px 8px;border-radius:99px;
+  background:var(--tag-bg);color:var(--tag-text);
+  font-weight:500;
+}
+
+.insight{
+  margin-top:.55rem;margin-left:2.4rem;
+  padding:.55rem .8rem;
+  background:var(--insight-bg);
+  border-left:3px solid var(--insight-border);
+  border-radius:0 6px 6px 0;
+  font-size:.84rem;color:var(--text-secondary);line-height:1.6;
+}
+.insight strong{color:var(--text);font-weight:600}
+
+/* ===== Tips ===== */
+.tips{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.3rem 1.4rem;
+  margin:2rem 0 1rem;
+}
+.tips h3{font-size:1rem;font-weight:650;margin-bottom:.6rem}
+.tips ul{font-size:.85rem;color:var(--text-secondary);line-height:1.8;padding-left:1rem}
+.tips ul strong{color:var(--text);font-weight:600}
+
+/* ===== Footer ===== */
+.foot{text-align:center;padding:2rem 0 3rem;color:var(--text-muted);font-size:.78rem}
+.foot a{color:var(--accent);text-decoration:none;transition:color var(--transition)}
+.foot a:hover{opacity:.7}
+.foot .warning{color:var(--accent);font-weight:600;margin-top:.35rem}
+
+/* ===== Responsive ===== */
+@media(max-width:600px){
+  .hero{padding:2rem 0 1rem}
+  .hero h1{font-size:1.3rem}
+  .hero h1 br{display:inline}
+  .hero p{font-size:.85rem}
+  .score-item{min-width:50px}
+  .score-num{font-size:1.1rem}
+  .card{padding:.8rem .95rem}
+  .insight{margin-left:0}
+}
+
+/* ===== Reduced Motion ===== */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .card:hover{transform:none;box-shadow:var(--shadow-sm)}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <div class="hero">
-  <span class="badge">📌 第十五届三创赛·竞赛规则</span>
+  <span class="badge">📌 第十五届三创赛 · 竞赛规则</span>
   <h1>全国大学生电子商务"三创赛"<br>评委高频30问 &amp; 考核逻辑</h1>
   <p>基于官方评分标准（创新25 + 创意25 + 创业25 + 演讲15 + 文案10），系统梳理小组赛7分钟问答环节评委最常追问的问题，逐题拆解背后的得分逻辑。</p>
 
   <div class="score-bar">
-    <div><div class="score-num score-color-1">25</div><div class="score-label">创新</div></div>
-    <div><div class="score-num score-color-2">25</div><div class="score-label">创意</div></div>
-    <div><div class="score-num score-color-3">25</div><div class="score-label">创业</div></div>
-    <div><div class="score-num score-color-4">15</div><div class="score-label">演讲</div></div>
-    <div><div class="score-num score-color-5">10</div><div class="score-label">文案</div></div>
+    <div class="score-item"><div class="score-num score-color-1">25</div><div class="score-label">创新</div></div>
+    <div class="score-item"><div class="score-num score-color-2">25</div><div class="score-label">创意</div></div>
+    <div class="score-item"><div class="score-num score-color-3">25</div><div class="score-label">创业</div></div>
+    <div class="score-item"><div class="score-num score-color-4">15</div><div class="score-label">演讲</div></div>
+    <div class="score-item"><div class="score-num score-color-5">10</div><div class="score-label">文案</div></div>
   </div>
   <div class="score-total">满分 100 分 · 小组赛形式：8分钟路演 + 7分钟问答</div>
 </div>
@@ -80,50 +258,50 @@
 <!-- ========== 一、创新（25分） ========== -->
 <div class="category" id="c1">
   <div class="cat-header">
-    <span class="cat-dot" style="background:#3b82f6"></span>
+    <span class="cat-dot" style="background:hsl(215,80%,55%)"></span>
     <span class="cat-title">一、创新考察</span>
     <span class="cat-count">8 题</span>
     <span class="cat-score">· 25分</span>
   </div>
-  <p style="font-size:.8rem;color:var(--sub);margin-bottom:1rem;">评分说明：在新产品/新技术/新模式/新服务等方面至少有一个明确创新点</p>
+  <p class="cat-desc">评分说明：在新产品/新技术/新模式/新服务等方面至少有一个明确创新点</p>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">1</span><div><span class="q-text">你们的项目有哪些创新点？是产品创新、技术创新还是模式创新？</span><div class="q-tags"><span class="q-tag">创新定位</span><span class="q-tag">高频必问</span></div></div></div>
+    <div class="q-head"><span class="q-num">1</span><div><div class="q-text">你们的项目有哪些创新点？是产品创新、技术创新还是模式创新？</div><div class="q-tags"><span class="q-tag">创新定位</span><span class="q-tag">高频必问</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委一上来就确认项目有没有"真东西"。三创赛规定"至少有一个明确创新点"，回答要按产品/技术/模式三个维度分层说明，不能混在一起讲。商业模式创新同样值钱，不一定要硬造技术亮点。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">2</span><div><span class="q-text">产品和已有的竞品相比，差异在哪？同样的事别人多久能做出来？</span><div class="q-tags"><span class="q-tag">竞品分析</span><span class="q-tag">壁垒</span></div></div></div>
+    <div class="q-head"><span class="q-num">2</span><div><div class="q-text">产品和已有的竞品相比，差异在哪？同样的事别人多久能做出来？</div><div class="q-tags"><span class="q-tag">竞品分析</span><span class="q-tag">壁垒</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委在评估创新壁垒的"厚度"。如果回答"别人一个月就能抄"，创新分就直接判低。需要说清楚差异化的来源——技术专利、数据积累、供应链绑定、品牌先发，其中任一项都能形成护城河。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">3</span><div><span class="q-text">这个创新点是自研的还是借鉴的？你怎么证明它是你们的？</span><div class="q-tags"><span class="q-tag">原创性</span><span class="q-tag">知识产权</span></div></div></div>
+    <div class="q-head"><span class="q-num">3</span><div><div class="q-text">这个创新点是自研的还是借鉴的？你怎么证明它是你们的？</div><div class="q-tags"><span class="q-tag">原创性</span><span class="q-tag">知识产权</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>三创赛明文强调"原创性"原则。评委区分"真自研"和"拼凑包装"。有专利证书/软著/论文最好，没有的话也要说清楚思想来源和迭代过程。谎称自研被发现会被判定违规。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">4</span><div><span class="q-text">客户的哪个需求是别人没满足、你们满足了的？你怎么知道有这个需求？</span><div class="q-tags"><span class="q-tag">需求洞察</span><span class="q-tag">用户验证</span></div></div></div>
+    <div class="q-head"><span class="q-num">4</span><div><div class="q-text">客户的哪个需求是别人没满足、你们满足了的？你怎么知道有这个需求？</div><div class="q-tags"><span class="q-tag">需求洞察</span><span class="q-tag">用户验证</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>回归商业本质——创新必须源于真实需求。评委关注的是需求发现的过程：是问卷调研、访谈、还是数据挖掘？有验证过程比口说"我觉得有需求"有说服力得多。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">5</span><div><span class="q-text">你们的产品/服务是"数字化赋能"的吗？如何用数字化手段解决传统问题？</span><div class="q-tags"><span class="q-tag">三创特色</span><span class="q-tag">数字化</span></div></div></div>
+    <div class="q-head"><span class="q-num">5</span><div><div class="q-text">你们的产品/服务是"数字化赋能"的吗？如何用数字化手段解决传统问题？</div><div class="q-tags"><span class="q-tag">三创特色</span><span class="q-tag">数字化</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>三创赛全称有"电子商务"，评委天然关注项目与数字化的关联度。需要明确指出用到了哪些数字化工具/平台/技术去解决传统行业的痛点，且数字化不是可有可无的装饰而是核心竞争力。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">6</span><div><span class="q-text">你们的创新解决了什么实际痛点？之前别人为什么没解决？</span><div class="q-tags"><span class="q-tag">痛点分析</span><span class="q-tag">创新价值</span></div></div></div>
+    <div class="q-head"><span class="q-num">6</span><div><div class="q-text">你们的创新解决了什么实际痛点？之前别人为什么没解决？</div><div class="q-tags"><span class="q-tag">痛点分析</span><span class="q-tag">创新价值</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委在检验"创新的必要性"。如果一个痛点存在多年且没人解决，需要解释原因（技术门槛/成本限制/认知盲区），以及你们凭什么能解决。这是创新价值的核心论证。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">7</span><div><span class="q-text">项目的技术路线是什么？用到哪些关键技术？</span><div class="q-tags"><span class="q-tag">技术实现</span></div></div></div>
+    <div class="q-head"><span class="q-num">7</span><div><div class="q-text">项目的技术路线是什么？用到哪些关键技术？</div><div class="q-tags"><span class="q-tag">技术实现</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委测试团队的"真懂"程度。技术项目要能说清架构、关键算法、开发栈细节；非技术项目要能说清运营/服务流程中的核心机制。笼统说"用AI"会被追问"具体怎么用"。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">8</span><div><span class="q-text">你的产品和市面上某产品功能类似，你觉得你们的核心差异真的是"创新"吗？</span><div class="q-tags"><span class="q-tag">压力测试</span></div></div></div>
+    <div class="q-head"><span class="q-num">8</span><div><div class="q-text">你的产品和市面上某产品功能类似，你觉得你们的核心差异真的是"创新"吗？</div><div class="q-tags"><span class="q-tag">压力测试</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>这是评委故意出的"压力测试题"——看团队是否对自身创新有清醒认知。如果惊慌失措或硬拗，说明团队自己都没想清楚。冷静承认部分相似并精准指出差异点的回答最加分。</div>
   </div>
 </div>
@@ -131,50 +309,50 @@
 <!-- ========== 二、创意（25分） ========== -->
 <div class="category" id="c2">
   <div class="cat-header">
-    <span class="cat-dot" style="background:#10b981"></span>
+    <span class="cat-dot" style="background:hsl(160,60%,45%)"></span>
     <span class="cat-title">二、创意考察</span>
     <span class="cat-count">8 题</span>
     <span class="cat-score">· 25分</span>
   </div>
-  <p style="font-size:.8rem;color:var(--sub);margin-bottom:1rem;">评分说明：创新性的商务策划（业务模式/营销模式/技术模式/财务支持）及可行性分析</p>
+  <p class="cat-desc">评分说明：创新性的商务策划（业务模式/营销模式/技术模式/财务支持）及可行性分析</p>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">9</span><div><span class="q-text">你们的商业模式是什么？怎么赚钱？钱从哪来？</span><div class="q-tags"><span class="q-tag">商业模式</span><span class="q-tag">必考</span></div></div></div>
+    <div class="q-head"><span class="q-num">9</span><div><div class="q-text">你们的商业模式是什么？怎么赚钱？钱从哪来？</div><div class="q-tags"><span class="q-tag">商业模式</span><span class="q-tag">必考</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>三创赛不是纯公益比赛，评委要求项目说清楚"怎么把钱收回来"。收入来源不能单一（只靠政府补贴），要有多元化的盈利设计（产品销售/SaaS订阅/平台抽成/增值服务等）。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">10</span><div><span class="q-text">市场规模有多大？怎么算出来的？可触达市场是多少？</span><div class="q-tags"><span class="q-tag">市场分析</span><span class="q-tag">可行性</span></div></div></div>
+    <div class="q-head"><span class="q-num">10</span><div><div class="q-text">市场规模有多大？怎么算出来的？可触达市场是多少？</div><div class="q-tags"><span class="q-tag">市场分析</span><span class="q-tag">可行性</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>C端项目说"14亿人每人买一个"是大忌。评委要求 TAM/SAM/SOM 分层逻辑清晰，引用数据有权威来源（报告/统计局/行业协会），计算结果与产品定价和客单价合理匹配。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">11</span><div><span class="q-text">你们的营销策略怎么设计？目前哪个渠道效果最好？</span><div class="q-tags"><span class="q-tag">营销模式</span></div></div></div>
+    <div class="q-head"><span class="q-num">11</span><div><div class="q-text">你们的营销策略怎么设计？目前哪个渠道效果最好？</div><div class="q-tags"><span class="q-tag">营销模式</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>创意分看的是"商务策划的创新性"，不只看渠道列表。评委关注是否有差异化的获客策略、是否有数据验证（获客成本/转化率/复购率）、以及策略是否随着阶段进化。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">12</span><div><span class="q-text">项目的可行性分析怎么做的？凭什么判断这个事能做成？</span><div class="q-tags"><span class="q-tag">可行性</span><span class="q-tag">经济分析</span></div></div></div>
+    <div class="q-head"><span class="q-num">12</span><div><div class="q-text">项目的可行性分析怎么做的？凭什么判断这个事能做成？</div><div class="q-tags"><span class="q-tag">可行性</span><span class="q-tag">经济分析</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委要求从经济可行性（成本结构/盈亏平衡点）、技术可行性（开发周期/技术储备）、管理可行性（团队能力/资源整合）和市场可行性（验证数据/合作意向）四个角度论证，缺一不可。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">13</span><div><span class="q-text">项目的定价策略是什么？为什么定这个价？</span><div class="q-tags"><span class="q-tag">财务设计</span></div></div></div>
+    <div class="q-head"><span class="q-num">13</span><div><div class="q-text">项目的定价策略是什么？为什么定这个价？</div><div class="q-tags"><span class="q-tag">财务设计</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>定价反映商业思维成熟度。评委要求说清楚定价考虑了哪些因素（成本加/竞争比/价值定价），与目标客群的支付意愿是否匹配。漫天要价或拍脑袋定价都会扣分。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">14</span><div><span class="q-text">你们的竞品分析做了吗？市场上还有谁在做？核心竞争力在哪？</span><div class="q-tags"><span class="q-tag">竞争分析</span></div></div></div>
+    <div class="q-head"><span class="q-num">14</span><div><div class="q-text">你们的竞品分析做了吗？市场上还有谁在做？核心竞争力在哪？</div><div class="q-tags"><span class="q-tag">竞争分析</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委故意看你是不是只挑了"弱对手"来对比。完善的竞品分析应包含直接竞争+间接竞争+潜在进入者，对每个对手的优劣势有客观分析。只说"没有竞品"等于没做功课。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">15</span><div><span class="q-text">财务预测的假设依据是什么？收入/成本/利润的测算逻辑讲一下。</span><div class="q-tags"><span class="q-tag">财务分析</span><span class="q-tag">高频追问</span></div></div></div>
+    <div class="q-head"><span class="q-num">15</span><div><div class="q-text">财务预测的假设依据是什么？收入/成本/利润的测算逻辑讲一下。</div><div class="q-tags"><span class="q-tag">财务分析</span><span class="q-tag">高频追问</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委对财务数据的追问相当细致：客单价怎么定的？复购率从哪来的？成本结构合理吗？增长率有根据吗？数据必须"有来路"——同行对标、测试结果、权威来源都行，最怕"拍脑袋"。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">16</span><div><span class="q-text">什么时候能盈利？盈亏平衡点在哪？</span><div class="q-tags"><span class="q-tag">经济模型</span></div></div></div>
+    <div class="q-head"><span class="q-num">16</span><div><div class="q-text">什么时候能盈利？盈亏平衡点在哪？</div><div class="q-tags"><span class="q-tag">经济模型</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委评估项目的财务健康度和现实感。盈亏平衡时间太短（3个月）显得假，太长（5年）项目没价值。关键是要有合理的单位经济模型（获客成本/客户生命周期价值/毛利率）支撑。</div>
   </div>
 </div>
@@ -182,50 +360,50 @@
 <!-- ========== 三、创业（25分） ========== -->
 <div class="category" id="c3">
   <div class="cat-header">
-    <span class="cat-dot" style="background:#f59e0b"></span>
+    <span class="cat-dot" style="background:hsl(40,85%,50%)"></span>
     <span class="cat-title">三、创业考察</span>
     <span class="cat-count">8 题</span>
     <span class="cat-score">· 25分</span>
   </div>
-  <p style="font-size:.8rem;color:var(--sub);margin-bottom:1rem;">评分说明：实践活动——创业准备/注册公司或合作/电商营销/经营效果（须提供佐证材料）</p>
+  <p class="cat-desc">评分说明：实践活动——创业准备/注册公司或合作/电商营销/经营效果（须提供佐证材料）</p>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">17</span><div><span class="q-text">项目目前做到了什么程度？有哪些实际成果？</span><div class="q-tags"><span class="q-tag">实践落地</span><span class="q-tag">高频必问</span></div></div></div>
+    <div class="q-head"><span class="q-num">17</span><div><div class="q-text">项目目前做到了什么程度？有哪些实际成果？</div><div class="q-tags"><span class="q-tag">实践落地</span><span class="q-tag">高频必问</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>三创赛创业分的核心是"真做"而非"想好"。评委区分"真实落地"和"纸上谈兵"就靠这题。佐证材料包括：已完成的小程序/APP/网站、销售记录、用户反馈截图、合作协议等。有真实数据比完美PPT值钱得多。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">18</span><div><span class="q-text">有没有注册公司？或者和有经营资质的公司合作？合作到什么程度？</span><div class="q-tags"><span class="q-tag">实体化</span><span class="q-tag">佐证材料</span></div></div></div>
+    <div class="q-head"><span class="q-num">18</span><div><div class="q-text">有没有注册公司？或者和有经营资质的公司合作？合作到什么程度？</div><div class="q-tags"><span class="q-tag">实体化</span><span class="q-tag">佐证材料</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委会追问合作是否真实——有没有盖章协议？是否有交易流水？合作是"战略意向"还是"实质性推进"？注册公司或签了合作协议的项目在创业分上有明显优势。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">19</span><div><span class="q-text">产品上线了吗？有多少用户/订单/销售额？</span><div class="q-tags"><span class="q-tag">经营效果</span><span class="q-tag">数据验证</span></div></div></div>
+    <div class="q-head"><span class="q-num">19</span><div><div class="q-text">产品上线了吗？有多少用户/订单/销售额？</div><div class="q-tags"><span class="q-tag">经营效果</span><span class="q-tag">数据验证</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>数字化运营数据是最有力的创业佐证。评委关注的不是数字大小（学生项目初期数据天然不大），而是数据是否真实可信、是否有增长趋势、团队是否理解数据背后的业务含义。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">20</span><div><span class="q-text">项目做了哪些电商营销实践？效果怎么样？</span><div class="q-tags"><span class="q-tag">电商属性</span></div></div></div>
+    <div class="q-head"><span class="q-num">20</span><div><div class="q-text">项目做了哪些电商营销实践？效果怎么样？</div><div class="q-tags"><span class="q-tag">电商属性</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>三创赛评委特别看重"电商"元素。是否有真正的线上营销行为——抖音/小红书/淘宝/拼多多等平台的运营数据、直播带货记录、社交媒体传播效果等。纯线下项目需要解释为什么适合参赛。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">21</span><div><span class="q-text">创业过程中遇到的最大困难是什么？怎么解决的？</span><div class="q-tags"><span class="q-tag">执行力</span><span class="q-tag">实战经验</span></div></div></div>
+    <div class="q-head"><span class="q-num">21</span><div><div class="q-text">创业过程中遇到的最大困难是什么？怎么解决的？</div><div class="q-tags"><span class="q-tag">执行力</span><span class="q-tag">实战经验</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委通过具体案例判断团队是否真的在"创业"而非"做作业"。说"没有困难"等于没做过。真实的困难描述+具体的解决过程更能体现创业精神和实践深度。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">22</span><div><span class="q-text">项目的成本构成是怎样的？目前有收入吗？能覆盖成本吗？</span><div class="q-tags"><span class="q-tag">经营效果</span></div></div></div>
+    <div class="q-head"><span class="q-num">22</span><div><div class="q-text">项目的成本构成是怎样的？目前有收入吗？能覆盖成本吗？</div><div class="q-tags"><span class="q-tag">经营效果</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>创业者必须具备成本意识。评委要求说清楚研发/生产/运营/营销的成本结构，目前收支状况，以及有多少现金流。有真实营业收入的项目（即使只是千元级别）在创业分上碾压纯构想项目。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">23</span><div><span class="q-text">如果给你100万融资，你打算怎么花？</span><div class="q-tags"><span class="q-tag">资金规划</span></div></div></div>
+    <div class="q-head"><span class="q-num">23</span><div><div class="q-text">如果给你100万融资，你打算怎么花？</div><div class="q-tags"><span class="q-tag">资金规划</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委考察创业者的资金规划能力和财务思维。分配方案要合理（研发% / 营销% / 团队%），与项目当前阶段匹配。不能瞎编数字，也不能"全部用来推广"这类没有深思的答案。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">24</span><div><span class="q-text">如何保证项目后续的持续运营？毕业后你们还会继续做吗？</span><div class="q-tags"><span class="q-tag">持续性</span><span class="q-tag">团队承诺</span></div></div></div>
+    <div class="q-head"><span class="q-num">24</span><div><div class="q-text">如何保证项目后续的持续运营？毕业后你们还会继续做吗？</div><div class="q-tags"><span class="q-tag">持续性</span><span class="q-tag">团队承诺</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委判断项目是"参赛作品"还是"创业项目"。需要展示清晰的人员交替机制/导师传承计划/项目迭代节奏。说"毕业后大家各奔东西但项目还在"需要合理说明谁来接手。</div>
   </div>
 </div>
@@ -233,30 +411,30 @@
 <!-- ========== 四、演讲（15分） ========== -->
 <div class="category" id="c4">
   <div class="cat-header">
-    <span class="cat-dot" style="background:#ec4899"></span>
+    <span class="cat-dot" style="background:hsl(330,65%,55%)"></span>
     <span class="cat-title">四、演讲与答辩考察</span>
     <span class="cat-count">4 题</span>
     <span class="cat-score">· 15分</span>
   </div>
-  <p style="font-size:.8rem;color:var(--sub);margin-bottom:1rem;">评分说明：团队组织合理/分工合作/服装整洁/表达清楚/有问必答/回答合理</p>
+  <p class="cat-desc">评分说明：团队组织合理/分工合作/服装整洁/表达清楚/有问必答/回答合理</p>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">25</span><div><span class="q-text">请用一句话说清楚你们的项目。</span><div class="q-tags"><span class="q-tag">电梯演讲</span><span class="q-tag">演讲力</span></div></div></div>
+    <div class="q-head"><span class="q-num">25</span><div><div class="q-text">请用一句话说清楚你们的项目。</div><div class="q-tags"><span class="q-tag">电梯演讲</span><span class="q-tag">演讲力</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>这是经典的"电梯演讲"测试——看团队是否能提炼出项目的核心价值。回答应该包含：为谁 + 解决什么问题 + 用什么方式 + 有什么独特价值。说得越长说明理解越模糊。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">26</span><div><span class="q-text">你在这个项目里具体负责什么？做了哪些具体工作？</span><div class="q-tags"><span class="q-tag">团队验证</span></div></div></div>
+    <div class="q-head"><span class="q-num">26</span><div><div class="q-text">你在这个项目里具体负责什么？做了哪些具体工作？</div><div class="q-tags"><span class="q-tag">团队验证</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委随机点名提问，检验每个成员的参与度。如果被点到的人答不上来，说明团队里有"挂名成员"。这也是判断团队分工是否真实、合理的重要窗口。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">27</span><div><span class="q-text">你觉得你们团队目前最大的短板是什么？打算怎么补？</span><span style="margin-left:6px;font-size:.82rem;color:#666;">or</span><span style="margin-left:4px;font-size:.82rem;color:#666;">评委指出项目某问题后追问"你怎么看"</span><div class="q-tags"><span class="q-tag">抗压测试</span><span class="q-tag">坦诚度</span></div></div></div>
+    <div class="q-head"><span class="q-num">27</span><div><div class="q-text">你觉得你们团队目前最大的短板是什么？打算怎么补？ <span class="alt-label">or 评委指出项目某问题后追问"你怎么看"</span></div><div class="q-tags"><span class="q-tag">抗压测试</span><span class="q-tag">坦诚度</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委在测试团队的自省能力和诚实度。回答"没有短板"等于不成熟。正确的做法是坦然承认不足，说明已经在做什么来补。面对评委指出的问题，先虚心接受再解释，切忌和评委争辩。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">28</span><div><span class="q-text">你们团队是怎么分工的？为什么这样分？</span><div class="q-tags"><span class="q-tag">组织管理</span></div></div></div>
+    <div class="q-head"><span class="q-num">28</span><div><div class="q-text">你们团队是怎么分工的？为什么这样分？</div><div class="q-tags"><span class="q-tag">组织管理</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委考察团队结构的合理性和成员的互补性。理想分工应覆盖技术+运营+财务三个核心职能，且与每个人的专业背景匹配。明确说"谁是队长、谁管技术、谁管运营、谁管财务"比泛泛说"大家一起做"好得多。</div>
   </div>
 </div>
@@ -264,18 +442,18 @@
 <!-- ========== 五、综合压力测试 ========== -->
 <div class="category" id="c5">
   <div class="cat-header">
-    <span class="cat-dot" style="background:#8b5cf6"></span>
+    <span class="cat-dot" style="background:hsl(270,60%,55%)"></span>
     <span class="cat-title">五、综合 &amp; 压力测试</span>
     <span class="cat-count">2 题</span>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">29</span><div><span class="q-text">你们这个项目如果做成了，对行业/社会/当地最大的贡献是什么？</span><div class="q-tags"><span class="q-tag">社会价值</span><span class="q-tag">高度</span></div></div></div>
+    <div class="q-head"><span class="q-num">29</span><div><div class="q-text">你们这个项目如果做成了，对行业/社会/当地最大的贡献是什么？</div><div class="q-tags"><span class="q-tag">社会价值</span><span class="q-tag">高度</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>评委在判断项目的"天花板"和格局。回答要落到具体可量化的影响——创造多少个就业岗位、降低多少成本、提升多少效率、服务多少人群。泛泛说"推动行业发展"不够，要有具体的数据和场景支撑。</div>
   </div>
 
   <div class="card">
-    <div class="q-head"><span class="q-num">30</span><div><span class="q-text">（针对项目弱点）你们这个问题怎么解释？如果是我我不会这么干。</span><div class="q-tags"><span class="q-tag">终极压力</span></div></div></div>
+    <div class="q-head"><span class="q-num">30</span><div><div class="q-text">（针对项目弱点）你们这个问题怎么解释？如果是我我不会这么干。</div><div class="q-tags"><span class="q-tag">终极压力</span></div></div></div>
     <div class="insight"><strong>考核逻辑：</strong>这是评委给出的终极压力测试——故意质疑项目。正确的应对是：① 感谢评委指出的角度；② 说明自己当前的考量逻辑；③ 承认可以在该方面优化。不慌乱、不狡辩、不顶撞，显示出创业者应有的心理素质和逻辑能力。</div>
   </div>
 </div>
@@ -295,7 +473,7 @@
 
 <div class="foot">
   <p>参考来源：第十五届三创赛竞赛规则（<a href="http://15.3chuang.net/single/5" target="_blank">15.3chuang.net</a>）、多届省赛国赛答辩实录、知乎创赛经验帖</p>
-  <p style="margin-top:.35rem;color:var(--accent);font-weight:600">⚠️ 仅供参考，批判学习</p>
+  <p class="warning">⚠️ 仅供参考，批判学习</p>
   <p style="margin-top:.4rem"><a href="/">← 返回首页</a></p>
 </div>
 

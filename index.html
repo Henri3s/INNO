@@ -3,38 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INNO — HTML Outputs</title>
+<title>INNO — 创新·创意·创业</title>
 <style>
-  body { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif; max-width: 700px; margin: 3rem auto; padding: 0 1rem; line-height: 1.6; color-scheme: light dark; }
-  h1 { font-size: 1.8rem; margin-bottom: .25rem; }
-  .sub { color: #666; margin-bottom: 2rem; }
-  ul { padding: 0; list-style: none; }
-  li { margin: .5rem 0; }
-  a { color: #2563eb; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .cat { font-weight: 600; margin-top: 1.5rem; margin-bottom: .3rem; color: #444; font-size: .95rem; display: flex; align-items: center; gap: .5rem; }
-  .cat-badge { font-size: .65rem; background: #e5e7eb; color: #6b7280; padding: 1px 8px; border-radius: 99px; font-weight: 400; }
-  @media (prefers-color-scheme: dark) { body { background: #111; color: #eee; } .cat { color: #aaa; } .cat-badge { background: #374151; color: #9ca3af; } a { color: #60a5fa; } .sub { color: #999; } }
+  /* ===== Reset & Variables ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --hue: 220;
+    --bg: #fafbfc;
+    --surface: #ffffff;
+    --text-primary: #171717;
+    --text-secondary: #525252;
+    --text-tertiary: #a3a3a3;
+    --border: #e5e5e5;
+    --accent: hsl(var(--hue), 70%, 50%);
+    --accent-soft: hsl(var(--hue), 70%, 96%);
+    --accent-mid: hsl(var(--hue), 45%, 40%);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.06);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,.08);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --font-sans: "Outfit", "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    --spacing-unit: 4px;
+    --transition: 200ms cubic-bezier(.4,0,.2,1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --text-primary: #f5f5f5;
+      --text-secondary: #a3a3a3;
+      --text-tertiary: #525252;
+      --border: #262626;
+      --accent: hsl(var(--hue), 65%, 55%);
+      --accent-soft: hsl(var(--hue), 40%, 12%);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.25);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,.3);
+    }
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ===== Layout ===== */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  /* ===== Header ===== */
+  header {
+    margin-bottom: 3.5rem;
+    text-align: center;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, hsl(var(--hue), 70%, 50%), hsl(260, 50%, 50%));
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -.02em;
+    margin-bottom: 1rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .logo:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 24px hsla(var(--hue), 70%, 50%, .3);
+  }
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin-bottom: .6rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    font-weight: 450;
+    max-width: 480px;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+  .subtitle em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ===== Section Categories ===== */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .9rem;
+    padding: 0 .25rem;
+  }
+  .section-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .section-title {
+    font-size: .85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-tertiary);
+  }
+  .section-count {
+    font-size: .7rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1px 8px;
+    border-radius: 99px;
+    margin-left: auto;
+  }
+
+  /* ===== Cards ===== */
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .9rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+    transition: opacity var(--transition);
+    pointer-events: none;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+  }
+  .card:hover::before { opacity: 1; }
+  .card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .card-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    position: relative;
+    z-index: 1;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .card-body {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .card-title {
+    font-size: .92rem;
+    font-weight: 550;
+    line-height: 1.4;
+    color: var(--text-primary);
+    transition: color var(--transition);
+  }
+  .card-title span {
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .card:hover .card-title { color: var(--accent); }
+
+  .card-meta {
+    font-size: .78rem;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  .card-arrow {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    color: var(--text-tertiary);
+    transition: transform var(--transition), color var(--transition), background var(--transition);
+    position: relative;
+    z-index: 1;
+  }
+  .card:hover .card-arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding-top: 2.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .deploy-info {
+    font-size: .78rem;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+  }
+  .deploy-info .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    display: inline-block;
+  }
+  .footer-links {
+    margin-top: .8rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: .78rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 480px) {
+    .container { padding: 2rem 1rem; }
+    h1 { font-size: 1.7rem; }
+    .subtitle { font-size: .92rem; }
+    .card { padding: .8rem .9rem; }
+    .card-icon { width: 34px; height: 34px; font-size: 1rem; }
+    .card-title { font-size: .85rem; }
+  }
+
+  /* ===== Reduced Motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    html { scroll-behavior: auto; }
+    .card:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
-<h1>INNO</h1>
-<p class="sub">Single-file HTML pages for 创新·创意·创业</p>
 
-<p class="cat">🏆 竞赛备考 <span class="cat-badge">2 篇</span></p>
-<ul>
-  <li><a href="/competition/">📋 中国国际大学生创新大赛 — 评委高频50问</a></li>
-  <li><a href="/competition/sanchuang-30q.html">🏆 三创赛评委高频30问 — 考核逻辑全解析</a></li>
-</ul>
+<div class="container">
 
-<p class="cat">📘 研究报告 <span class="cat-badge">1 篇</span></p>
-<ul>
-  <li><a href="/reports/tech-transfer.html">🔬 科技成果转化全生命周期深度指南</a></li>
-</ul>
+<header>
+  <div class="logo">IN</div>
+  <h1>创新·创意·创业</h1>
+  <p class="subtitle">单文件 HTML 知识页 · 为 <em>三创赛</em> 与 <em>创新大赛</em> 备赛而生</p>
+</header>
 
-<p class="cat" style="margin-top:2.5rem;font-size:.8rem;color:#999">📎 部署</p>
-<ul>
-  <li><span style="color:var(--sub);font-size:.85rem">Vercel · GitHub · auto-deploy on push</span></li>
-</ul>
+<!-- 竞赛备考 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🏆</span>
+    <span class="section-title">竞赛备考</span>
+    <span class="section-count">2 篇</span>
+  </div>
+  <div class="card-list">
+    <a href="/competition/" class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-body">
+        <div class="card-title">中国国际大学生创新大赛 <span>— 评委高频50问</span></div>
+        <div class="card-meta">通用+4赛道 · 含考察要点 · 含评分逻辑</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+    <a href="/competition/sanchuang-30q.html" class="card">
+      <div class="card-icon">🏆</div>
+      <div class="card-body">
+        <div class="card-title">三创赛评委高频30问 <span>— 考核逻辑全解析</span></div>
+        <div class="card-meta">按评分维度分类 · 每题含考核逻辑 · 黄金法则</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- 研究报告 -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">📘</span>
+    <span class="section-title">研究报告</span>
+    <span class="section-count">1 篇</span>
+  </div>
+  <div class="card-list">
+    <a href="/reports/tech-transfer.html" class="card">
+      <div class="card-icon">🔬</div>
+      <div class="card-body">
+        <div class="card-title">科技成果转化全生命周期深度指南</div>
+        <div class="card-meta">从实验室到产业化 · 全流程框架与实务</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="deploy-info">
+    <span class="dot"></span>
+    Vercel · GitHub · auto-deploy on push
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/Henri3s/INNO" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://inno-eta.vercel.app" target="_blank" rel="noopener">Vercel</a>
+    <span style="font-size:.78rem;color:var(--text-tertiary)">⚠️ 仅供参考，批判学习</span>
+  </div>
+</footer>
+
+</div>
+
 </body>
 </html>

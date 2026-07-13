@@ -3,25 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中国国际大学生创新大赛 — 评委高频问题</title>
+<title>中国国际大学生创新大赛 — 评委高频问题 | INNO</title>
 <style>
-:root{color-scheme:light dark}*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.7}.container{max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem}
-header{text-align:center;margin-bottom:2rem}header h1{font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}header .subtitle{color:#64748b;font-size:.95rem;margin-top:.5rem}
-.tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:1.2rem 0 2rem}.tab-btn{padding:.5rem 1.2rem;border-radius:999px;border:2px solid #e2e8f0;background:#fff;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s}.tab-btn:hover{border-color:#2563eb;color:#2563eb}.tab-btn.active{background:#2563eb;color:#fff;border-color:#2563eb}
-.track-panel{display:none}.track-panel.active{display:block}.track-tag{display:inline-block;padding:.2rem .7rem;border-radius:6px;font-size:.75rem;font-weight:600;margin-bottom:1.5rem}
-.tag-common{background:#e0e7ff;color:#4338ca}.tag-gaojiao{background:#dcfce7;color:#166534}.tag-honglv{background:#fee2e2;color:#991b1b}.tag-zhijiao{background:#fef3c7;color:#92400e}
-.category{margin-bottom:2.2rem}.category-title{display:flex;align-items:center;gap:.6rem;font-size:1.1rem;font-weight:700;color:#1e293b;padding:.7rem 1rem;background:#fff;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:.6rem}.category-title .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:#2563eb;color:#fff;font-size:.75rem;font-weight:700;flex-shrink:0}.category-desc{font-size:.83rem;color:#64748b;margin:-.2rem 0 .6rem 1rem}
-.q-card{background:#fff;border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:3px solid #e2e8f0;transition:border-color .15s}.q-card:hover{border-left-color:#2563eb}.q-card .q-num{display:inline-block;font-size:.73rem;font-weight:700;color:#2563eb;background:#eef2ff;padding:.12rem .5rem;border-radius:6px;margin-bottom:.3rem}.q-card .q-text{font-size:.93rem;font-weight:600;color:#1e293b}.q-card .q-point{margin-top:.35rem;font-size:.83rem;color:#64748b}.q-card .q-point strong{color:#7c3aed;font-weight:600}
-footer{text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid #e2e8f0;font-size:.8rem;color:#94a3b8}footer a{color:#2563eb;text-decoration:none}
-@media(prefers-color-scheme:dark){body{background:#0f172a;color:#e2e8f0}.tab-btn{background:#1e293b;border-color:#334155;color:#cbd5e1}.tab-btn:hover{border-color:#6366f1;color:#a5b4fc}.tab-btn.active{background:#4f46e5;color:#fff;border-color:#4f46e5}.category-title{background:#1e293b;color:#f1f5f9}.q-card{background:#1e293b;border-left-color:#334155}.q-card:hover{border-left-color:#6366f1}.q-card .q-text{color:#f1f5f9}.q-card .q-point{color:#94a3b8}.tag-common{background:#1e1b4b;color:#a5b4fc}.tag-gaojiao{background:#052e16;color:#86efac}.tag-honglv{background:#450a0a;color:#fca5a5}.tag-zhijiao{background:#451a03;color:#fcd34d}footer{border-top-color:#334155}}
-@media print{body{background:#fff;color:#000}.q-card{break-inside:avoid;box-shadow:none}.category-title{background:#f0f0f0;box-shadow:none}.tab-btn{display:none}.track-panel{display:block!important}}
+/* ===== Reset & Variables ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --hue: 220;
+  --bg: #f8f9fa;
+  --surface: #fff;
+  --surface-hover: #f5f6f7;
+  --text: #171717;
+  --text-secondary: #525252;
+  --text-tertiary: #a3a3a3;
+  --border: #e5e5e5;
+  --border-light: #f0f0f0;
+  --accent: hsl(var(--hue),65%,50%);
+  --accent-soft: hsl(var(--hue),60%,96%);
+  --accent-mid: hsl(var(--hue),40%,42%);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.06);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --font: "Outfit","Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --transition: 200ms cubic-bezier(.4,0,.2,1);
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0a0a0a;
+    --surface:#141414;
+    --surface-hover:#1a1a1a;
+    --text:#f5f5f5;
+    --text-secondary:#a3a3a3;
+    --text-tertiary:#525252;
+    --border:#262626;
+    --border-light:#1e1e1e;
+    --accent:hsl(var(--hue),60%,55%);
+    --accent-soft:hsl(var(--hue),35%,10%);
+    --shadow-sm:0 1px 3px rgba(0,0,0,.2);
+    --shadow-md:0 4px 14px rgba(0,0,0,.25);
+  }
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+
+/* ===== Header ===== */
+header{text-align:center;margin-bottom:2.5rem}
+.header-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:600;
+  color:var(--accent);background:var(--accent-soft);
+  padding:3px 12px;border-radius:99px;
+  margin-bottom:.8rem;
+}
+h1{
+  font-size:2rem;font-weight:700;letter-spacing:-.02em;
+  line-height:1.2;text-wrap:balance;
+  margin-bottom:.5rem;
+}
+header .subtitle{
+  font-size:.95rem;font-weight:450;
+  color:var(--text-secondary);max-width:520px;
+  margin:0 auto;text-wrap:pretty;
+}
+
+/* ===== Tabs ===== */
+.tabs{
+  display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;
+  margin:1.6rem 0 2rem;
+}
+.tab-btn{
+  padding:.5rem 1.15rem;border-radius:99px;
+  border:1.5px solid var(--border);
+  background:var(--surface);
+  color:var(--text-secondary);
+  font-size:.85rem;font-weight:550;
+  cursor:pointer;transition:all var(--transition);
+  font-family:inherit;
+}
+.tab-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tab-btn.active{
+  background:var(--accent);color:#fff;
+  border-color:var(--accent);
+}
+.tab-btn:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;
+}
+
+/* ===== Track Panels ===== */
+.track-panel{display:none}.track-panel.active{display:block}
+.track-tag{
+  display:inline-block;padding:.2rem .75rem;border-radius:6px;
+  font-size:.74rem;font-weight:600;margin-bottom:1.2rem;
+}
+.tag-common{background:var(--accent-soft);color:var(--accent)}
+.tag-gaojiao{background:hsl(140,40%,92%);color:hsl(140,50%,30%)}
+.tag-honglv{background:hsl(0,40%,92%);color:hsl(0,55%,35%)}
+.tag-zhijiao{background:hsl(40,50%,90%);color:hsl(40,55%,30%)}
+@media(prefers-color-scheme:dark){
+  .tag-gaojiao{background:hsl(140,30%,8%);color:hsl(140,40%,60%)}
+  .tag-honglv{background:hsl(0,30%,10%);color:hsl(0,45%,60%)}
+  .tag-zhijiao{background:hsl(40,30%,9%);color:hsl(40,50%,55%)}
+}
+
+/* ===== Category ===== */
+.category{margin-bottom:2.4rem}
+.category-title{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:1.05rem;font-weight:650;letter-spacing:-.01em;
+  color:var(--text);
+  padding:.7rem 1rem;
+  background:var(--surface);
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  margin-bottom:.6rem;
+  transition:border-color var(--transition);
+}
+.category-title .num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:8px;
+  background:var(--accent-soft);color:var(--accent);
+  font-size:.73rem;font-weight:700;flex-shrink:0;
+}
+.category-desc{
+  font-size:.82rem;color:var(--text-tertiary);
+  margin:-.15rem 0 .65rem .2rem;text-wrap:pretty;
+}
+
+/* ===== Question Cards ===== */
+.q-card{
+  background:var(--surface);
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  padding:.9rem 1.1rem;
+  margin-bottom:.55rem;
+  border-left:3px solid var(--border);
+  transition:transform var(--transition),box-shadow var(--transition),border-left-color var(--transition);
+}
+.q-card:hover{
+  transform:translateY(-1.5px);
+  box-shadow:var(--shadow-md);
+  border-left-color:var(--accent);
+}
+.q-card:focus-within{
+  outline:2px solid var(--accent);outline-offset:2px;
+  border-radius:var(--radius-md);
+}
+.q-card .q-num{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  color:var(--accent);background:var(--accent-soft);
+  padding:.1rem .5rem;border-radius:6px;
+  margin-bottom:.3rem;
+}
+.q-card .q-text{font-size:.91rem;font-weight:550;color:var(--text);line-height:1.55}
+.q-card .q-point{
+  margin-top:.35rem;font-size:.82rem;
+  color:var(--text-secondary);line-height:1.6;
+}
+.q-card .q-point strong{
+  color:var(--accent-mid);font-weight:600;
+}
+
+/* ===== Footer ===== */
+footer{text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--text-tertiary)}
+footer a{color:var(--accent);text-decoration:none;transition:color var(--transition)}
+footer a:hover{opacity:.7}
+footer .warning{margin-top:.5rem;font-weight:600;color:hsl(0,70%,50%)}
+
+/* ===== Responsive ===== */
+@media(max-width:600px){
+  .container{padding:1.5rem 1rem 3rem}
+  h1{font-size:1.4rem}
+  header .subtitle{font-size:.85rem}
+  .tabs{gap:.3rem}
+  .tab-btn{padding:.4rem .85rem;font-size:.8rem}
+  .category{padding:0}
+  .category-title{font-size:.95rem;padding:.6rem .8rem}
+  .q-card{padding:.75rem .85rem}
+  .q-card .q-text{font-size:.86rem}
+  .q-card .q-point{font-size:.8rem}
+}
+
+/* ===== Print ===== */
+@media print{
+  body{background:#fff;color:#000}
+  .q-card{break-inside:avoid;box-shadow:none}
+  .tab-btn{display:none}
+  .track-panel{display:block!important}
+}
+
+/* ===== Reduced Motion ===== */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .q-card:hover{transform:none;box-shadow:var(--shadow-sm)}
+}
 </style>
 </head>
 <body>
 <div class="container">
 <header>
-<h1>中国国际大学生创新大赛</h1>
-<div class="subtitle">评委高频问题 · 含考察要点 · 分赛道展示</div>
+<div class="header-badge">📌 中国国际大学生创新大赛（原「互联网+」）</div>
+<h1>评委高频问题</h1>
+<div class="subtitle">含考察要点 · 分赛道展示 · 通用50问 + 各赛道专属问题</div>
 </header>
 
 <div class="tabs">
@@ -36,13 +232,17 @@ function switchTab(id){
   document.querySelectorAll('.tab-btn').forEach(function(b,i){
     b.classList.toggle('active',['common','gaojiao','honglv','zhijiao'][i]===id);
   });
-  document.querySelectorAll('.track-panel').forEach(function(p){p.classList.toggle('active',p.id===id);});
+  document.querySelectorAll('.track-panel').forEach(function(p){
+    p.classList.toggle('active',p.id===id);
+  });
   window.location.hash=id;
 }
 (function(){var h=window.location.hash.slice(1);if(h)switchTab(h);})();
 </script>
+
 <div class="track-panel active" id="common">
 <div class="track-tag tag-common">通用问题 · 适用于所有赛道 · 50问</div>
+
 <div class="category">
 <div class="category-title"><span class="num">1</span>项目背景与痛点</div>
 <div class="category-desc">评委想确认：你们发现的问题是不是真问题？值不值得解决？</div>
@@ -52,6 +252,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q4</div><div class="q-text">这个市场有多大？你们的目标市场规模（TAM/SAM/SOM）是多少？</div><div class="q-point"><strong>🎯 考察点：</strong>团队对市场空间的理性判断。需要给出有依据的测算逻辑，而非夸大数字。</div></div>
 <div class="q-card"><div class="q-num">Q5</div><div class="q-text">为什么是现在做这个项目？时机成熟了吗？</div><div class="q-point"><strong>🎯 考察点：</strong>对行业趋势和技术成熟度的判断。政策红利、技术拐点、社会需求变化等外部驱动因素是否被充分认知。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">2</span>创新性与技术</div>
 <div class="category-desc">评委想确认：你们的创新是真创新还是伪创新？技术壁垒有多高？</div>
@@ -63,6 +264,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q11</div><div class="q-text">你们的项目如何体现「互联网+」或数字化/智能化的特征？</div><div class="q-point"><strong>🎯 考察点：</strong>技术与产业的融合深度。是否真正用技术解决了传统行业的痛点。</div></div>
 <div class="q-card"><div class="q-num">Q12</div><div class="q-text">如果技术路线走不通，你们的备选方案是什么？</div><div class="q-point"><strong>🎯 考察点：</strong>风险意识和技术储备。评委欣赏有Plan B的团队。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">3</span>产品与解决方案</div>
 <div class="category-desc">评委想确认：产品是不是真的做出来了？用户反馈如何？</div>
@@ -74,6 +276,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q18</div><div class="q-text">产品的成本结构是怎样的？单位经济模型算过吗？</div><div class="q-point"><strong>🎯 考察点：</strong>对产品商业可行性的理解。评委希望看到团队算过账。</div></div>
 <div class="q-card"><div class="q-num">Q19</div><div class="q-text">如果用户量增长10倍，你们的产品架构能支撑吗？</div><div class="q-point"><strong>🎯 考察点：</strong>技术架构的可扩展性和团队的前瞻性思考。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">4</span>商业模式与盈利</div>
 <div class="category-desc">评委想确认：这事能不能赚钱？怎么赚钱？能持续赚钱吗？</div>
@@ -85,6 +288,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q25</div><div class="q-text">如果大公司进入这个领域，你们怎么应对？</div><div class="q-point"><strong>🎯 考察点：</strong>竞争壁垒和战略思维。是否有差异化生存策略。</div></div>
 <div class="q-card"><div class="q-num">Q26</div><div class="q-text">你们需要融资吗？融资用途、出让股份、估值依据是什么？</div><div class="q-point"><strong>🎯 考察点：</strong>融资规划的合理性。钱花在哪里、估值是否有依据、股权结构是否合理。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">5</span>市场与竞争</div>
 <div class="category-desc">评委想确认：你们了解市场吗？知道对手是谁吗？凭什么赢？</div>
@@ -95,6 +299,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q31</div><div class="q-text">你们覆盖了多少客户？转化率是多少？</div><div class="q-point"><strong>🎯 考察点：</strong>市场验证的真实数据。完整的漏斗数据。</div></div>
 <div class="q-card"><div class="q-num">Q32</div><div class="q-text">国际市场有考虑吗？出海计划是怎样的？</div><div class="q-point"><strong>🎯 考察点：</strong>格局和视野。对海外市场的认知和初步规划。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">6</span>团队维度</div>
 <div class="category-desc">评委想确认：为什么是你们这个团队能做成？</div>
@@ -104,6 +309,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q36</div><div class="q-text">你们的股权结构和决策机制是怎样的？</div><div class="q-point"><strong>🎯 考察点：</strong>团队治理的规范性。股权分配、决策机制、退出机制。</div></div>
 <div class="q-card"><div class="q-num">Q37</div><div class="q-text">你们有哪些外部资源支持（导师、企业、政府、投资机构等）？</div><div class="q-point"><strong>🎯 考察点：</strong>资源整合能力。能否撬动外部资源为己所用。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">7</span>运营与成果</div>
 <div class="category-desc">评委想确认：项目是不是真的在运转？取得了什么实际成果？</div>
@@ -113,6 +319,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q41</div><div class="q-text">项目是否有媒体报道或社会认可？获得过哪些奖项？</div><div class="q-point"><strong>🎯 考察点：</strong>社会影响力的佐证。第三方认可更有说服力。</div></div>
 <div class="q-card"><div class="q-num">Q42</div><div class="q-text">项目的可持续性体现在哪里？核心成员毕业后项目还能继续吗？</div><div class="q-point"><strong>🎯 考察点：</strong>项目的长期生命力。是否有传承机制和稳定运营模式。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">8</span>教育维度（成长与收获）</div>
 <div class="category-desc">评委想确认：参赛过程对学生的成长真的有价值吗？</div>
@@ -121,6 +328,7 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q45</div><div class="q-text">做这个项目，你最大的收获和成长是什么？</div><div class="q-point"><strong>🎯 考察点：</strong>参赛的教育价值。真实的成长故事。</div></div>
 <div class="q-card"><div class="q-num">Q46</div><div class="q-text">你们学校对创新创业教育有什么支持政策？指导老师给了哪些帮助？</div><div class="q-point"><strong>🎯 考察点：</strong>高校双创教育的实效性。</div></div>
 </div>
+
 <div class="category">
 <div class="category-title"><span class="num">9</span>公益与社会价值</div>
 <div class="category-desc">评委想确认：项目对社会有什么真实贡献？受益者是谁？</div>
@@ -129,7 +337,9 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Q49</div><div class="q-text">如果政府停止补贴或外部资助中断，项目如何持续运营？</div><div class="q-point"><strong>🎯 考察点：</strong>公益项目的可持续性设计。是否有「造血机制」。</div></div>
 <div class="q-card"><div class="q-num">Q50</div><div class="q-text">你们的模式是否可以复制到其他地方？有没有示范效应？</div><div class="q-point"><strong>🎯 考察点：</strong>可复制性和推广价值。</div></div>
 </div>
-</div><div class="track-panel" id="gaojiao">
+</div>
+
+<div class="track-panel" id="gaojiao">
 <div class="track-tag tag-gaojiao">高教主赛道专属 · 16问</div>
 <div class="category">
 <div class="category-title"><span class="num">1</span>学术与科研转化</div>
@@ -158,7 +368,9 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">G14</div><div class="q-text">（创业组）团队成员全职还是兼职？为什么相信自己能赢过大公司？</div><div class="q-point"><strong>🎯 考察点：</strong>创业决心和竞争力。</div></div>
 <div class="q-card"><div class="q-num">G15</div><div class="q-text">你们的三年规划是什么？每年的关键里程碑是什么？</div><div class="q-point"><strong>🎯 考察点：</strong>战略规划的清晰度和可执行性。</div></div>
 </div>
-</div><div class="track-panel" id="honglv">
+</div>
+
+<div class="track-panel" id="honglv">
 <div class="track-tag tag-honglv">红旅赛道专属 · 15问</div>
 <div class="category">
 <div class="category-title"><span class="num">1</span>红色传承与思政教育</div>
@@ -187,7 +399,9 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">H14</div><div class="q-text">项目形成的经验模式能否总结成可推广的标准方案？</div><div class="q-point"><strong>🎯 考察点：</strong>经验标准化和可复制性。</div></div>
 <div class="q-card"><div class="q-num">H15</div><div class="q-text">如果项目团队成员毕业离开，当地的运营谁来接手？</div><div class="q-point"><strong>🎯 考察点：</strong>传承机制。红旅项目最怕「学生走了项目就倒了」。</div></div>
 </div>
-</div><div class="track-panel" id="zhijiao">
+</div>
+
+<div class="track-panel" id="zhijiao">
 <div class="track-tag tag-zhijiao">职教赛道专属 · 15问</div>
 <div class="category">
 <div class="category-title"><span class="num">1</span>产教融合与技能转化</div>
@@ -216,9 +430,14 @@ function switchTab(id){
 <div class="q-card"><div class="q-num">Z14</div><div class="q-text">项目培养了多少技术技能人才？他们就业情况如何？</div><div class="q-point"><strong>🎯 考察点：</strong>人才培养的量化成果。</div></div>
 <div class="q-card"><div class="q-num">Z15</div><div class="q-text">你们如何看待职业教育的社会价值？</div><div class="q-point"><strong>🎯 考察点：</strong>对职业教育使命的认知深度。</div></div>
 </div>
-</div><footer>
+</div>
+
+<footer>
 <p>基于中国国际大学生创新大赛（原「互联网+」大赛）历年路演答辩高频问题整理</p>
 <p>参考来源：创赛网 · 知乎 · 大数跨境 · 各高校备赛辅导资料 · 大赛评审规则</p>
-<p style="margin-top:.5rem;font-weight:600;color:#ef4444">⚠️ 仅供参考，批判学习</p>
-<p style="margin-top:.5rem"><a href="https://inno-eta.vercel.app">INNO</a> · 持续更新</p>
-</footer></div></body></html>
+<p class="warning">⚠️ 仅供参考，批判学习</p>
+<p style="margin-top:.5rem"><a href="https://inno-eta.vercel.app">INNO</a> · 持续更新 · <a href="/">← 返回首页</a></p>
+</footer>
+</div>
+</body>
+</html>
